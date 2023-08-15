@@ -27,7 +27,7 @@ nuclei -l hexdomains.txt -o hexresultsnovo.txt
  
  grep -v 'untrusted-root-certificate\|weak-cipher-suites\|info' hexresultsfinal.txt > hexresultsfiltered.txt
  
- cat hexresultsfiltered.txt | cut -d " " -f 1-4 | tr -d "[" | tr -d "]" | sed "s/low/| LOW 🟢/g" | sed "s/medium/|    MEDIUM 🟡/g" | sed "s/high/| HIGH 🟠/g" | sed "s/critical/| CRITICAL 🔴/g" > limpo.txt
+ cat hexresultsfiltered.txt | cut -d " " -f 1-4 | tr -d "[" | tr -d "]" | sed "s/low/| LOW 🟢/g" | sed "s/medium/| MEDIUM 🟡/g" | sed "s/high/| HIGH 🟠/g" | sed "s/critical/| CRITICAL 🔴/g" > limpo.txt
  while read in; do
      ./pirates-send.sh "$in"
  done < limpo.txt
