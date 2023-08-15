@@ -20,6 +20,6 @@
      exit 0
  fi
  
- proxychains curl -s -X POST  --data "text=$1" --data "chat_id=$GROUP_ID" https://api.telegram.org/bot$BOT_TOKEN/     sendMessage > /dev/null
+  curl -s -X POST  --data "text=$1" --data "chat_id=$GROUP_ID" https://api.telegram.org/bot$BOT_TOKEN/     sendMessage > /dev/null
 ~ 
 
