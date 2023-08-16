@@ -11,7 +11,9 @@
  cp hexresultsnovo.txt hexresultsvelho.txt
  
  #comando de scan do nuclei, usa a lista de dominios hexdomains.txt e passa o resultado pro hexresultsnovo.txt
-nuclei -l hexdomains.txt -o hexresultsnovo.txt
+ 
+ datahorario=$(date +"%d/%m/%Y %H:%M")
+   ./pirates-send.sh "|| ♻️SCAN INICIADO!%0A|| ♻️$datahorario"
  
  #organiza os results pra sorted, e depois passa eles em comm pra retirar dados repetidos
  cat hexresultsvelho.txt | sort > hexresultsvelhosorted.txt
@@ -27,7 +29,9 @@ nuclei -l hexdomains.txt -o hexresultsnovo.txt
  
  grep -v 'untrusted-root-certificate\|weak-cipher-suites\|info' hexresultsfinal.txt > hexresultsfiltered.txt
  
- cat hexresultsfiltered.txt | cut -d " " -f 1-4 | tr -d "[" | tr -d "]" | sed "s/low/| LOW 🟢/g" | sed "s/medium/| MEDIUM 🟡/g" | sed "s/high/| HIGH 🟠/g" | sed "s/critical/| CRITICAL 🔴/g" > limpo.txt
+ cat hexresultsfiltered.txt | cut -d " " -f 1-4 | tr -d   "[" | tr -d "]" | sed "s/low/%0ALOW 🟢%0A/g" | sed "s/   medium/%0AMEDIUM 🟡%0A/g" | sed "s/high/%0AHIGH 🟠%0A/   g" | sed "s/critical/%0ACRITICAL 🔴%A/g" > limpo.txt
  while read in; do
      ./pirates-send.sh "$in"
  done < limpo.txt
+ datahorario=$(date +"%d/%m/%Y %H:%M")
+   ./pirates-send.sh "|| ♻️SCAN FINALIZADO!%0A|| ♻️$datahorario"
