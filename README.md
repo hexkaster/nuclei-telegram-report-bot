@@ -1,6 +1,5 @@
 # Nuclei scanner bot in telegram
-Bash scripting that returns results from Nuclei's scan through telegram.
-
+Did a little scripting to automate the process of finding potential threats in a domain using [nuclei](https://github.com/projectdiscovery/nuclei). This bot returns the nuclei diagnostic in a relatively simplified way via Telegram. 
 
 ### BOT CONFIG
 First of all, you gotta configure the bot setup in the ``pirates-send.sh`` file. To do this, you need an already running telegram bot. I followed the very first steps of [this](https://medium.com/bug-bounty/using-notify-to-send-notifications-to-a-telegram-bot-with-the-help-of-chatgpt-3ab950655a01) tutorial, but I did *not* use notify in this script.
